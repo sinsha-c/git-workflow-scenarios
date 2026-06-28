@@ -1,10 +1,39 @@
-**Scenario** 
+# Git Workflow Scenarios: Branches, Merges, Conflicts & Cherry-Pick
+ 
+## Overview
+ 
+This repository covers foundational Git workflows used in real-world DevOps environments — from repository setup and branching strategy to conflict resolution and selective commit management using cherry-pick.
 
-You are working as a DevOps Engineer in a company called **ABC Technologies**. The development team is building a simple website called **Student Portal**. 
+---
 
-Different developers work on different features using Git branches. Your task is to manage branches, merge changes, resolve conflicts, and use cherry-pick when required. 
+## Scenario
 
-**Task 1: Create Repository**
+ABC Technologies development team is building a Student Portal application.
+
+Multiple developers work on different features simultaneously.
+The DevOps responsibility is to maintain a clean Git workflow by managing:
+
+- Feature branches
+- Code merges
+- Merge conflict resolution
+- Hotfix releases
+- Selective commit delivery
+
+---
+
+## Tools Used
+
+| Tool | Purpose |
+|---|---|
+| Git | Version control |
+| GitHub | Repository hosting |
+| Linux Terminal | Git operations |
+
+---
+
+## Implementation Steps
+
+### 1. Create Repository**
 
 - Login to github and create a new repository
 
@@ -34,7 +63,7 @@ git remote add origin URL (copy the github repo url from github which already cr
 git push origin main
 ```
 
-**Task 2: Create Feature Branch** 
+### 2. Create Feature Branch** 
 
 Management wants a login page. Create a branch and working in it 
 
@@ -45,7 +74,7 @@ git checkout -b feature-login
 
 ![Git Init](screenshots/image2.png)
 
-**Task 3: Create Another Feature Branch** Switch to main and Create another branch also continue work on it 
+### 3. Create Another Feature Branch** Switch to main and Create another branch also continue work on it 
 ```bash
 git checkout main  
 git checkout -b feature-signup  
@@ -55,18 +84,19 @@ git checkout -b feature-signup
 git add .  
 git commit -m “added signup”
 ```
-**Task 4: Merge Feature Branch** Merge feature into main. 
+### 4. Merge Feature Branch** Merge feature into main. 
 ```bash
 git checkout main  
 git merge feature-login  
 git merge feature-signup
 ```
 
-**Task 5: Create Merge Conflict** 
+### 5. Create Merge Conflict** 
 
 Now simulate two developers modifying the same line. 
 
 From command line open a file (signup.html) and added one line at the end  
+
 ```bash
 git add .
 git commit -m "forgot password" 
@@ -81,12 +111,14 @@ git checkout main
 git merge feature-signup
 ``` 
 
-❌Below message will throw as error
+Git detects conflicting changes and pauses the merge operation.
+
 ```bash
 CONFLICT (content): Merge conflict in signup.html
 Automatic merge failed; fix conflicts and then commit the result.
 ```
-**Task 6: Resolve Merge Conflict**  
+### 6. Resolve Merge Conflict**  
+
 Try merging: 
 - Open signup.html and remove markers and keep only the desired line  
 ![Git Init](screenshots/image10.png)
@@ -103,7 +135,7 @@ To add the branch remotely
   git push origin feature-login  
   git push origin feature-signup
 ```
-**Task 7: Create Hotfix Branch** 
+### 7. Create Hotfix Branch** 
 
 Production issue found. Create hotfix branch and work on it 
 ```bash
@@ -117,7 +149,7 @@ git commit -m "login bug fixed:hotfix"
 ```
 ![Git Init](screenshots/image3.png) 
 
-**Task 8: Cherry Pick Commit** Management wants only the hotfix commit in main. 
+### 8. Cherry Pick Commit** Management wants only the hotfix commit in main. 
 ```bash  
 - git log --oneline
 ``` 
@@ -131,7 +163,7 @@ Check the file. You can see only the cherrypiked commit has come in the main bra
 
 ![Git Init](screenshots/image9.png)
 
-**Task 9: Delete Merged Branches** 
+### 9. Delete Merged Branches** 
 
 List branches and list merged branches:
 ```bash
@@ -144,10 +176,36 @@ git branch -d feature-login
 ```
 ![Git Init](screenshots/image1.png)
 
-**Task 10: Verify Final Repository** 
+### 10. Verify Final Repository** 
+
 Display graph:  
 ```bash
 git log --oneline --graph
 ```
 ![Git Init](screenshots/image8.png)
 
+---
+
+## Key Takeaways
+ 
+| Concept | When to Use |
+|---|---|
+| **Feature Branch** | Isolate new features from main |
+| **Merge** | Integrate completed feature work |
+| **Conflict Resolution** | When two branches modify the same lines |
+| **Hotfix Branch** | Urgent production fixes directly from main |
+| **Cherry-Pick** | Apply a specific commit without a full merge |
+| **Branch Cleanup** | Remove merged branches to keep the repo clean |
+ 
+---
+
+## Part of
+ 
+> **#AWSDevOpsRestartJourney** — Hands-on DevOps scenarios built and documented weekly.
+> Follow along: [linkedin.com/in/sinshac](https://linkedin.com/in/sinshac)
+
+##  Author
+
+**Sinsha C** — [GitHub](https://github.com/sinsha-c)
+
+---
