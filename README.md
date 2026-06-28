@@ -35,11 +35,12 @@ The DevOps responsibility is to maintain a clean Git workflow by managing:
 
 ### 1. Create Repository
 
-- Login to github and create a new repository
+Login to github and create a new repository
 
 ![Git Init](screenshots/image5.png)
 
-- Go to the terminal where the git is configured already.  
+Go to the terminal where the git is configured already.  
+
 ```bash
 git clone <repourl>  
 cd <reponame>  
